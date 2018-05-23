@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+        <meta name="description" content="">
+
+        <link rel="shortcut icon" href="favicon.ico">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/html5-boilerplate.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+
+    <body>
+        <h1 class="main-title">Filterify</h1>
+        <p class="sub-title">All your favorite photo-filters, made with pure CSS and JavaScript.</p>
+
+        <ul class="filters-list">
+          <li class="filter-list-item">
+            <p class="filter-name">Old-Timey</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="oldtimey"/>
+            <p id="oldtimeyvalue" class="value"></p>
+          </li>
+          <li class="filter-list-item">
+            <p class="filter-name">Blur</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="blur"/>
+            <p id="blurvalue" class="value"></p>
+          </li>
+          <li class="filter-list-item">
+            <p class="filter-name">Brightness</p>
+            <input type="range" min="0" max="500" value="100" class="slider" id="brightness"/>
+            <p id="brightnessvalue" class="value"></p>
+          </li>
+          <li class="filter-list-item">
+            <p class="filter-name">Invert</p>
+            <input type="range" min="0" max="100" value="0" class="slider" id="invert"/>
+            <p id="invertvalue" class="value"></p>
+          </li>
+          <li class="filter-list-item">
+            <p class="filter-name">Contrast</p>
+            <input type="range" min="0" max="500" value="100" class="slider" id="contrast"/>
+            <p id="contrastvalue" class="value"></p>
+          </li>
+          <li class="filter-list-item">
+            <p class="filter-name">Hue</p>
+            <input type="range" min="0" max="360" value="0" class="slider" id="huerotate"/>
+            <p id="huerotatevalue" class="value"></p>
+          </li>
+        </ul>
+
+        <video id="video" width="640" height="480" autoplay></video>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

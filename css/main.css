@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Your custom CSS styles
+   ========================================================================== */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .filters-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .filter-list-item {
+    padding: 10px;
+  }
+
+  .value {
+    margin-top: -30px;
+    margin-left: 92px;
+    font-weight: 900;
+    user-select: none;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 30px;
+    background: #d3d3d3;
+    outline: none;
+    border: 1px solid gray;
+    box-sizing: border-box;
+   }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: white;
+    z-index: 5;
+    opacity: 0.5;
+    cursor: pointer;
+    border: 3px solid black;
+    box-sizing: border-box;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    background: white;
+    cursor: pointer;
+    border: 3px solid black;
+    box-sizing: border-box;
+  }
+
+
+/* ==========================================================================
+   Your custom CSS styles for smartphones and screens smaller than 480 px
+   ========================================================================== */
+
+@media only screen and (max-width: 480px) {
+    /* insert styles here */
+}
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/* Clearfix
+ * Adding a 'clearfix' class will allow parent elements to contain a floated child element
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
