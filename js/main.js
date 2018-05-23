@@ -23,20 +23,7 @@ let videoFilters = [
   { filterName: "skewY", filterCss: "skewY(0deg)" }
 ];
 
-let defaultValues = [
-  { filterName: "monochrome", filterCss: "grayscale(0%)" },
-  { filterName: "blur", filterCss: "blur(0px)" },
-  { filterName: "brightness", filterCss: "brightness(100%)" },
-  { filterName: "opacity", filterCss: "opacity(100%)" },
-  { filterName: "saturate", filterCss: "saturate(100%)" },
-  { filterName: "sepia", filterCss: "sepia(0%)" },
-  { filterName: "invert", filterCss: "invert(0%)" },
-  { filterName: "contrast", filterCss: "contrast(100%)" },
-  { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" },
-  { filterName: "rotate", filterCss: "rotate(0deg)" },
-  { filterName: "skewX", filterCss: "skewX(0deg)" },
-  { filterName: "skewY", filterCss: "skewY(0deg)" }
-];
+let defaultValues = JSON.parse(JSON.stringify(videoFilters));
 
 let masterFilter;
 let masterRotate;
@@ -58,20 +45,7 @@ function addFilter() {
 function resetAll(){
   masterFilter = '';
   masterRotate = '';
-  videoFilters = [
-    { filterName: "monochrome", filterCss: "grayscale(0%)" },
-    { filterName: "blur", filterCss: "blur(0px)" },
-    { filterName: "brightness", filterCss: "brightness(100%)" },
-    { filterName: "opacity", filterCss: "opacity(100%)" },
-    { filterName: "saturate", filterCss: "saturate(100%)" },
-    { filterName: "sepia", filterCss: "sepia(0%)" },
-    { filterName: "invert", filterCss: "invert(0%)" },
-    { filterName: "contrast", filterCss: "contrast(100%)" },
-    { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" },
-    { filterName: "rotate", filterCss: "rotate(0deg)" },
-    { filterName: "skewX", filterCss: "skewX(0deg)" },
-    { filterName: "skewY", filterCss: "skewY(0deg)" }
-  ];
+  videoFilters = JSON.parse(JSON.stringify(defaultValues));
   defaultValues.forEach(fltr => {
     if(fltr.filterName === "rotate" || fltr.filterName === "skewX" || fltr.filterName === "skewY"){
       masterRotate += (fltr.filterCss);
