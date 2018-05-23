@@ -18,16 +18,34 @@ let videoFilters = [
   { filterName: "invert", filterCss: "invert(0%)" },
   { filterName: "contrast", filterCss: "contrast(100%)" },
   { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" },
-  { filterName: "rotate", filterCss: "rotate(0deg)" }
+  { filterName: "rotate", filterCss: "rotate(0deg)" },
+  { filterName: "skewX", filterCss: "skewX(0deg)" },
+  { filterName: "skewY", filterCss: "skewY(0deg)" }
+];
+
+let defaultValues = [
+  { filterName: "monochrome", filterCss: "grayscale(0%)" },
+  { filterName: "blur", filterCss: "blur(0px)" },
+  { filterName: "brightness", filterCss: "brightness(100%)" },
+  { filterName: "opacity", filterCss: "opacity(100%)" },
+  { filterName: "saturate", filterCss: "saturate(100%)" },
+  { filterName: "sepia", filterCss: "sepia(0%)" },
+  { filterName: "invert", filterCss: "invert(0%)" },
+  { filterName: "contrast", filterCss: "contrast(100%)" },
+  { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" },
+  { filterName: "rotate", filterCss: "rotate(0deg)" },
+  { filterName: "skewX", filterCss: "skewX(0deg)" },
+  { filterName: "skewY", filterCss: "skewY(0deg)" }
 ];
 
 let masterFilter;
+let masterRotate;
 
 function addFilter() {
   masterFilter = '';
   masterRotate = '';
   videoFilters.forEach(fltr => {
-    if(fltr.filterName === "rotate"){
+    if(fltr.filterName === "rotate" || fltr.filterName === "skewX" || fltr.filterName === "skewY"){
       masterRotate += (fltr.filterCss);
       video.style.transform = masterRotate;
     } else {
@@ -35,6 +53,67 @@ function addFilter() {
       video.style.filter = masterFilter;
     }
   });
+}
+
+function resetAll(){
+  masterFilter = '';
+  masterRotate = '';
+  defaultValues.forEach(fltr => {
+    if(fltr.filterName === "rotate" || fltr.filterName === "skewX" || fltr.filterName === "skewY"){
+      masterRotate += (fltr.filterCss);
+      video.style.transform = masterRotate;
+    } else {
+      masterFilter += (fltr.filterCss + ' ');
+      video.style.filter = masterFilter;
+    }
+  });
+  let monochrome = document.getElementById("monochrome");
+  monochrome.value = 0;
+  document.getElementById("monochromevalue").innerHTML = monochrome.value;
+
+  let blur = document.getElementById("blur");
+  blur.value = 0;
+  document.getElementById("blurvalue").innerHTML = blur.value;
+
+  let brightness = document.getElementById("brightness");
+  brightness.value = 0;
+  document.getElementById("brightnessvalue").innerHTML = brightness.value;
+
+  let opacity = document.getElementById("opacity");
+  opacity.value = 0;
+  document.getElementById("opacityvalue").innerHTML = opacity.value;
+
+  let saturation = document.getElementById("saturation");
+  saturation.value = 0;
+  document.getElementById("saturationvalue").innerHTML = saturation.value;
+
+  let sepia = document.getElementById("sepia");
+  sepia.value = 0;
+  document.getElementById("sepiavalue").innerHTML = sepia.value;
+
+  let invert = document.getElementById("invert");
+  invert.value = 0;
+  document.getElementById("invertvalue").innerHTML = invert.value;
+
+  let contrast = document.getElementById("contrast");
+  contrast.value = 0;
+  document.getElementById("contrastvalue").innerHTML = contrast.value;
+
+  let huerotate = document.getElementById("huerotate");
+  huerotate.value = 0;
+  document.getElementById("huerotatevalue").innerHTML = huerotate.value;
+
+  let rotate = document.getElementById("rotate");
+  rotate.value = 0;
+  document.getElementById("rotatevalue").innerHTML = rotate.value;
+
+  let skewX = document.getElementById("skewX");
+  skewX.value = 0;
+  document.getElementById("skewXvalue").innerHTML = skewX.value;
+
+  let skewY = document.getElementById("skewY");
+  skewY.value = 0;
+  document.getElementById("skewYvalue").innerHTML = skewY.value;
 }
 
 addFilter();
@@ -138,5 +217,30 @@ rotatevalue.innerHTML = rotate.value;
 rotate.oninput = function() {
   rotatevalue.innerHTML = this.value;
   videoFilters.find(el => el.filterName === 'rotate').filterCss = `rotate(${this.value}deg)`
+  addFilter();
+}
+
+let skewX = document.getElementById("skewX");
+let skewXvalue = document.getElementById("skewXvalue");
+skewXvalue.innerHTML = skewX.value;
+
+skewX.oninput = function() {
+  skewXvalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'skewX').filterCss = `skewX(${this.value}deg)`
+  addFilter();
+}
+
+let skewY = document.getElementById("skewY");
+let skewYvalue = document.getElementById("skewYvalue");
+skewYvalue.innerHTML = skewY.value;
+
+let resetButton = document.getElementById("reset-button");
+resetButton.onclick = function() {
+  resetAll();
+}
+
+skewY.oninput = function() {
+  skewYvalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'skewY').filterCss = `skewY(${this.value}deg)`
   addFilter();
 }

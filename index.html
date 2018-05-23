@@ -69,17 +69,35 @@
               </li>
               <li class="filter-list-item">
                 <p class="filter-name">Hue</p>
-                <input type="range" min="0" max="360" value="0" class="slider" id="huerotate"/>
+                <input type="range" min="-180" max="180" value="0" class="slider" id="huerotate"/>
                 <p id="huerotatevalue" class="value"></p>
               </li>
               <li class="filter-list-item">
                 <p class="filter-name">Rotation</p>
-                <input type="range" min="0" max="360" value="0" class="slider" id="rotate"/>
+                <input type="range" min="-180" max="180" value="0" class="slider" id="rotate"/>
                 <p id="rotatevalue" class="value"></p>
               </li>
             </ul>
           </section>
         </main>
+        <section class="bottom">
+          <li class="filter-list-item">
+            <p class="filter-name">SkewX</p>
+            <input type="range" min="-50" max="50" value="0" class="slider" id="skewX"/>
+            <p id="skewXvalue" class="value"></p>
+          </li>
+          <li class="filter-list-item">
+            <button id="reset-button">
+              RESET
+            </button>
+          </li>
+          <li class="filter-list-item">
+            <p class="filter-name">SkewY</p>
+            <input type="range" min="-50" max="50" value="0" class="slider" id="skewY"/>
+            <p id="skewYvalue" class="value"></p>
+          </li>
+        </ul>
+        </section>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
     </body>
