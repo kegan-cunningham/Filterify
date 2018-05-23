@@ -9,9 +9,12 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 }
 
 let videoFilters = [
-  { filterName: "oldtimey", filterCss: "grayscale(0%)" },
+  { filterName: "monochrome", filterCss: "grayscale(0%)" },
   { filterName: "blur", filterCss: "blur(0px)" },
   { filterName: "brightness", filterCss: "brightness(100%)" },
+  { filterName: "opacity", filterCss: "opacity(100%)" },
+  { filterName: "saturate", filterCss: "saturate(100%)" },
+  { filterName: "sepia", filterCss: "sepia(0%)" },
   { filterName: "invert", filterCss: "invert(0%)" },
   { filterName: "contrast", filterCss: "contrast(100%)" },
   { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" }
@@ -37,13 +40,13 @@ function applyFilters(masterFilter) {
 
 // functions handling different filters
 
-let oldtimey = document.getElementById("oldtimey");
-let oldtimeyvalue = document.getElementById("oldtimeyvalue");
-oldtimeyvalue.innerHTML = oldtimey.value;
+let monochrome = document.getElementById("monochrome");
+let monochromevalue = document.getElementById("monochromevalue");
+monochromevalue.innerHTML = monochrome.value;
 
-oldtimey.oninput = function() {
-  oldtimeyvalue.innerHTML = this.value;
-  videoFilters.find(el => el.filterName === 'oldtimey').filterCss = `grayscale(${this.value}%)`
+monochrome.oninput = function() {
+  monochromevalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'monochrome').filterCss = `grayscale(${this.value}%)`
   addFilter();
 }
 
@@ -64,6 +67,36 @@ brightnessvalue.innerHTML = brightness.value;
 brightness.oninput = function() {
   brightnessvalue.innerHTML = this.value;
   videoFilters.find(el => el.filterName === 'brightness').filterCss = `brightness(${this.value}%)`
+  addFilter();
+}
+
+let opacity = document.getElementById("opacity");
+let opacityvalue = document.getElementById("opacityvalue");
+opacityvalue.innerHTML = opacity.value;
+
+opacity.oninput = function() {
+  opacityvalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'opacity').filterCss = `opacity(${this.value}%)`
+  addFilter();
+}
+
+let saturation = document.getElementById("saturation");
+let saturationvalue = document.getElementById("saturationvalue");
+saturationvalue.innerHTML = saturation.value;
+
+saturation.oninput = function() {
+  saturationvalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'saturate').filterCss = `saturate(${this.value}%)`
+  addFilter();
+}
+
+let sepia = document.getElementById("sepia");
+let sepiavalue = document.getElementById("sepiavalue");
+sepiavalue.innerHTML = sepia.value;
+
+sepia.oninput = function() {
+  sepiavalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'sepia').filterCss = `sepia(${this.value}%)`
   addFilter();
 }
 

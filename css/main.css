@@ -8,6 +8,16 @@
     flex-direction: column;
   }
 
+  .main-title {
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .sub-title {
+    padding: 5px;
+    margin: 5px;
+  }
+
   li {
     list-style: none;
   }
@@ -16,11 +26,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .filter-list-item {
     padding: 10px;
+  }
+
+  .filter-name {
+    padding-bottom: 5px;
+    margin: 0px;
   }
 
   .value {
