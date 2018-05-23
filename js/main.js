@@ -17,26 +17,27 @@ let videoFilters = [
   { filterName: "sepia", filterCss: "sepia(0%)" },
   { filterName: "invert", filterCss: "invert(0%)" },
   { filterName: "contrast", filterCss: "contrast(100%)" },
-  { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" }
+  { filterName: "hue-rotate", filterCss: "hue-rotate(0deg)" },
+  { filterName: "rotate", filterCss: "rotate(0deg)" }
 ];
 
 let masterFilter;
 
 function addFilter() {
   masterFilter = '';
+  masterRotate = '';
   videoFilters.forEach(fltr => {
-    masterFilter += (fltr.filterCss + ' ');
+    if(fltr.filterName === "rotate"){
+      masterRotate += (fltr.filterCss);
+      video.style.transform = masterRotate;
+    } else {
+      masterFilter += (fltr.filterCss + ' ');
+      video.style.filter = masterFilter;
+    }
   });
-  applyFilters(masterFilter)
 }
 
 addFilter();
-
-function applyFilters(masterFilter) {
-  console.log(masterFilter)
-  video.style.filter = masterFilter;
-  console.log(video.style.filter)
-}
 
 // functions handling different filters
 
@@ -127,5 +128,15 @@ huerotatevalue.innerHTML = huerotate.value;
 huerotate.oninput = function() {
   huerotatevalue.innerHTML = this.value;
   videoFilters.find(el => el.filterName === 'hue-rotate').filterCss = `hue-rotate(${this.value}deg)`
+  addFilter();
+}
+
+let rotate = document.getElementById("rotate");
+let rotatevalue = document.getElementById("rotatevalue");
+rotatevalue.innerHTML = rotate.value;
+
+rotate.oninput = function() {
+  rotatevalue.innerHTML = this.value;
+  videoFilters.find(el => el.filterName === 'rotate').filterCss = `rotate(${this.value}deg)`
   addFilter();
 }

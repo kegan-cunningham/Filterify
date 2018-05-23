@@ -8,6 +8,17 @@
     flex-direction: column;
   }
 
+  video {
+    border: 1px solid black;
+  }
+
+  .filterify{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+  }
+
   .main-title {
     padding: 5px;
     margin: 5px;
@@ -26,6 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 0px;
     margin: 0px;
     width: 100%;
@@ -39,6 +51,7 @@
   .filter-name {
     padding-bottom: 5px;
     margin: 0px;
+    text-align: center;
   }
 
   .value {
