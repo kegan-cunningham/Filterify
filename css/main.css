@@ -6,6 +6,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('../images/wood.jpg');
+    background-position: center;
+    color: white;
+    text-shadow: 1px 1px 3px black;
   }
 
   video {
@@ -23,6 +27,9 @@
   .main-title {
     padding: 5px;
     margin: 5px;
+    margin-bottom: -5px;
+    font-family: 'Yatra One', cursive;
+    font-size: 340%;
   }
 
   .sub-title {
@@ -66,6 +73,8 @@
     margin-left: 95px;
     font-weight: 900;
     user-select: none;
+    color: black;
+    text-shadow: none;
   }
 
   .slider {
