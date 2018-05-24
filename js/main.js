@@ -23,18 +23,19 @@ let videoFilters = [
   { filterName: "skewY", filterCss: "skewY(0deg)" }
 ];
 
+// Deep-dup video filters
 let defaultValues = JSON.parse(JSON.stringify(videoFilters));
 
 let masterFilter;
-let masterRotate;
+let masterTransform;
 
 function addFilter() {
   masterFilter = '';
-  masterRotate = '';
+  masterTransform = '';
   videoFilters.forEach(fltr => {
     if(fltr.filterName === "rotate" || fltr.filterName === "skewX" || fltr.filterName === "skewY"){
-      masterRotate += (fltr.filterCss);
-      video.style.transform = masterRotate;
+      masterTransform += (fltr.filterCss);
+      video.style.transform = masterTransform;
     } else {
       masterFilter += (fltr.filterCss + ' ');
       video.style.filter = masterFilter;
@@ -44,17 +45,20 @@ function addFilter() {
 
 function resetAll(){
   masterFilter = '';
-  masterRotate = '';
+  masterTransform = '';
+  // Again, deep dup the default values
   videoFilters = JSON.parse(JSON.stringify(defaultValues));
   defaultValues.forEach(fltr => {
     if(fltr.filterName === "rotate" || fltr.filterName === "skewX" || fltr.filterName === "skewY"){
-      masterRotate += (fltr.filterCss);
-      video.style.transform = masterRotate;
+      masterTransform += (fltr.filterCss);
+      video.style.transform = masterTransform;
     } else {
       masterFilter += (fltr.filterCss + ' ');
       video.style.filter = masterFilter;
     }
   });
+
+  // Resetting the individual filters. This is something I'd DRY up with continued development.
   let monochrome = document.getElementById("monochrome");
   monochrome.value = 0;
   document.getElementById("monochromevalue").innerHTML = monochrome.value;
@@ -104,9 +108,10 @@ function resetAll(){
   document.getElementById("skewYvalue").innerHTML = skewY.value;
 }
 
+// Initial add of default values
 addFilter();
 
-// functions handling different filters; with more time I'd DRY these up
+// Functions handling oninput for different filters; with more time I'd DRY these up
 let monochrome = document.getElementById("monochrome");
 let monochromevalue = document.getElementById("monochromevalue");
 monochromevalue.innerHTML = monochrome.value;
