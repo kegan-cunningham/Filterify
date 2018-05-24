@@ -1,9 +1,20 @@
 let video = document.getElementById('video');
 
+// Not using this because my personal site isn't HTTPS, and this code requires that
+
+// if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//   navigator.mediaDevices.getUserMedia({ video: true })
+//   .then(function(stream) {
+//     video.srcObject = stream;
+//     video.play();
+//   });
+// }
+
+// For now I'm using this deprecated version
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
   .then(function(stream) {
-    video.srcObject = stream;
+    video.src = window.URL.createObjectURL(stream);
     video.play();
   });
 }
@@ -106,7 +117,7 @@ function resetAll(){
 
 addFilter();
 
-// functions handling different filters
+// functions handling different filters; with more time I'd DRY these up
 let monochrome = document.getElementById("monochrome");
 let monochromevalue = document.getElementById("monochromevalue");
 monochromevalue.innerHTML = monochrome.value;
