@@ -1,20 +1,9 @@
 let video = document.getElementById('video');
 
-// Not using this because my personal site isn't HTTPS, and this code requires that
-
-// if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//   navigator.mediaDevices.getUserMedia({ video: true })
-//   .then(function(stream) {
-//     video.srcObject = stream;
-//     video.play();
-//   });
-// }
-
-// For now I'm using this deprecated version
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
   .then(function(stream) {
-    video.src = window.URL.createObjectURL(stream);
+    video.srcObject = stream;
     video.play();
   });
 }
